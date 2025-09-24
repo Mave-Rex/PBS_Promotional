@@ -85,38 +85,59 @@ export default function Navbar() {
               Inicio
             </Link>
 
-            {/* Servicios (accordion) */}
-            <button
-              type="button"
-              className="flex items-center justify-between py-2 hover:text-white"
-              onClick={() => setOpenServices((v) => !v)}
-              aria-expanded={openServices}
-              aria-controls="mobile-sub-services"
-            >
-              <span>Servicios</span>
-              <ChevronDown className={`h-5 w-5 transition-transform ${openServices ? "rotate-180" : ""}`} />
-            </button>
+        {/* Servicios (fila con link + botón toggle) */}
+        <div className="flex items-center justify-between">
+          {/* Link que navega a /services y cierra el drawer */}
+          <Link
+            href="/services"
+            onClick={() => setOpen(false)}
+            className="py-2 hover:text-white flex-1"
+          >
+            Servicios
+          </Link>
 
-            {/* Submenú móvil */}
-            {openServices && (
-              <div id="mobile-sub-services" className="ml-3 border-l border-white/10 pl-3">
-                <div className="text-sm text-zinc-400 mb-2">Artículos Promocionales</div>
-                <ul className="max-h-64 overflow-auto">
-                  {itemCategories.map((c) => (
-                    <li key={c.slug}>
-                      <Link
-                        href={`/underConstruction/${c.slug}`}
-                        onClick={() => setOpen(false)}
-                        className="block py-2 hover:text-white"
-                      >
-                        {c.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          {/* Botón que SOLO abre/cierra el submenú */}
+          <button
+            type="button"
+            className="p-2 -mr-2"
+            onClick={() => setOpenServices(v => !v)}
+            aria-expanded={openServices}
+            aria-controls="mobile-sub-services"
+            aria-label="Abrir submenú de Servicios"
+          >
+            <ChevronDown className={`h-5 w-5 transition-transform ${openServices ? "rotate-180" : ""}`} />
+          </button>
+        </div>
 
+        {/* Submenú móvil */}
+        {openServices && (
+          <div id="mobile-sub-services" className="ml-3 border-l border-white/10 pl-3">
+            <ul className="max-h-64 overflow-auto">
+              {/* Opcional: primer item que también va a /services */}
+              <li>
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  className="block py-2 font-medium hover:text-white"
+                >
+                  Ver todos los servicios
+                </Link>
+              </li>
+
+              {itemCategories.map(c => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/services/articulos/${c.slug}`}
+                    onClick={() => setOpen(false)}
+                    className="block py-2 hover:text-white"
+                  >
+                    {c.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
             <Link href="/#about" onClick={() => setOpen(false)} className="hover:text-white py-2">
               Quiénes somos
             </Link>

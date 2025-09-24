@@ -7,22 +7,30 @@ export default function ServicesMain() {
       {/* Hero */}
       <section
         className="
-          relative mx-auto max-w-4xl
-          h-[38vh] md:h-[45vh] lg:h-[52vh]
+          relative mx-auto w-[92%] max-w-4xl
+          h-[42vh] sm:h-[46vh] md:h-[50vh] lg:h-[54vh]
           overflow-hidden rounded-2xl
         "
       >
         <Image
           src={heroImage.src}
           alt={heroImage.alt}
-          width={heroImage.width}
-          height={heroImage.height}
-          className="w-full h-auto object-cover"
+          fill
+          sizes="(min-width:1024px) 800px, 92vw"
+          className="object-cover"
           priority
         />
-        <h1 className="absolute inset-x-0 bottom-6 text-center text-white text-4xl font-bold">
-          Servicios Publicitarios
-        </h1>
+
+        {/* Overlay para mejorar contraste del texto */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+
+        {/* Título centrado y responsivo */}
+        <div className="absolute inset-0 flex items-end md:items-center justify-center p-4">
+          <h1 className="text-white text-center font-bold leading-tight
+                        text-3xl sm:text-4xl md:text-5xl drop-shadow">
+            Servicios <br className="sm:hidden" /> Publicitarios
+          </h1>
+        </div>
       </section>
 
       {/* ¿Sabías qué? */}
