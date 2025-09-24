@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-white text-gray-800">
+    <section id="about" className="py-16 md:pt-16 md:pb-0 bg-white text-gray-800">
       <div className="max-w-5xl mx-auto px-4 space-y-12">
 
         {/* Título principal */}
@@ -15,7 +15,7 @@ export default function About() {
           <div className="text-center">
           <img
             src="/images/acerca_de.png"
-            alt="Equipo de trabajo PBS Promotional"
+            alt="Acerca de PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
         </div>
@@ -32,6 +32,8 @@ export default function About() {
             mediante productos de alta gama por su impacto en el mercado.
           </p>
         </div>
+        <hr className="border-t-2 border-pink-500 my-8" />
+
 
         
         {/* Misión */}
@@ -43,7 +45,7 @@ export default function About() {
         <div className="text-center">
           <img
             src="/images/misión.png"  
-            alt="Equipo de trabajo PBS Promotional"
+            alt="Misión PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
         </div>
@@ -61,10 +63,11 @@ export default function About() {
           <div className="text-center">
           <img
             src="/images/visión.png"
-            alt="Equipo de trabajo PBS Promotional"
+            alt="Visión PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
-        </div>
+          </div>
+
           <div className="text-center space-y-3 pt-6">
             <h4 className="text-lg font-bold text-gray-800">VISIÓN</h4>
             <p className="text-base leading-relaxed text-gray-700 max-w-3xl mx-auto">
@@ -72,6 +75,7 @@ export default function About() {
               principal agencia de marketing y publicidad en la región.
             </p>
           </div>
+          <hr className="border-t-2 border-pink-500 my-8" />
         </div>
       </div>
     </section>

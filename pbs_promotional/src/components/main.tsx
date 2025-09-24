@@ -1,6 +1,6 @@
 export default function Main() {
   return (
-    <section className="py-16 md:py-24 bg-white text-gray-800">
+    <section className="py-16 md:pt-16 md:pb-0 bg-white text-gray-800">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700">
           Una experiencia de servicio completa
@@ -25,6 +25,8 @@ export default function Main() {
             productos.
           </p>
         </div>
+        <hr className="border-t-2 border-pink-500 my-8" />
+
       </div>
     </section>
   );

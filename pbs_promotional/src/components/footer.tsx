@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0b0c0f] border-t border-white/10">
       {/* Redes sociales */}
-      <div className="py-10 text-center">
+      <div className="py-6 text-center">
         <h2 className="text-2xl font-semibold text-pink-500 mb-6">
           Síguenos en Redes
         </h2>
