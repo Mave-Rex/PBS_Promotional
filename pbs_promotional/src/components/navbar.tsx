@@ -31,7 +31,6 @@ export default function Navbar() {
             <Link href="/services" className="hover:text-white">Servicios</Link>
             <Link href="/#about" className="hover:text-white">Quiénes somos</Link>
             <Link href="/#contacto" className="hover:text-white">Contacto</Link>
-            <Link href="/#cursos" className="hover:text-white">Cursos Online</Link>
           </nav>
 
           {/* Botón hamburguesa móvil */}
@@ -62,9 +61,6 @@ export default function Navbar() {
             </Link>
             <Link href="/#contacto" onClick={() => setOpen(false)} className="hover:text-white">
               Contacto
-            </Link>
-            <Link href="/#cursos" onClick={() => setOpen(false)} className="hover:text-white">
-              Cursos Online
             </Link>
           </nav>
         </div>

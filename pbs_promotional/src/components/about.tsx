@@ -17,6 +17,8 @@ export default function About() {
           <Image 
             src="/images/acerca_de.png"
             alt="Acerca de PBS"
+            width={550} 
+            height={350} 
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
         </div>
@@ -47,6 +49,8 @@ export default function About() {
           <Image 
             src="/images/misión.png"  
             alt="Misión PBS"
+            width={550} 
+            height={350} 
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
         </div>
@@ -65,6 +69,8 @@ export default function About() {
           <Image 
             src="/images/visión.png"
             alt="Visión PBS"
+            width={550} 
+            height={350} 
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
           />
           </div>
