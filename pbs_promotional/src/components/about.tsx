@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function About() {
   return (
     <section id="about" className="py-16 md:pt-16 md:pb-0 bg-white text-gray-800">
@@ -13,7 +14,7 @@ export default function About() {
           </h3>
 
           <div className="text-center">
-          <img
+          <Image 
             src="/images/acerca_de.png"
             alt="Acerca de PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
@@ -43,7 +44,7 @@ export default function About() {
           </h3>
 
         <div className="text-center">
-          <img
+          <Image 
             src="/images/misión.png"  
             alt="Misión PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
@@ -61,7 +62,7 @@ export default function About() {
 
           {/* Visión */}
           <div className="text-center">
-          <img
+          <Image 
             src="/images/visión.png"
             alt="Visión PBS"
             className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"

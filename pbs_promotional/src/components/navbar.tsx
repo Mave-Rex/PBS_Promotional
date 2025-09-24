@@ -1,7 +1,9 @@
-"use client"; // 👈 necesario en Next.js App Router para usar useState
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // íconos hamburguesa y cerrar
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -11,25 +13,34 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           {/* Logo */}
-          <Link href="/#inicio" className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="pbs" className="h-7 w-7" />
+          <Link href="/#inicio" className="flex items-center gap-2" aria-label="Ir al inicio">
+            <Image
+              src="/images/logo.png" // ← archivo en /public/images/logo.png
+              alt="PBS Promotional"
+              width={28}
+              height={28}
+              className="h-7 w-7"
+              priority
+            />
             <span className="font-semibold text-white">PBS Promotional</span>
           </Link>
 
           {/* Links desktop */}
           <nav className="hidden md:flex gap-6 text-white/80">
-            <a href="/#inicio" className="hover:text-white">Inicio</a>
-            <a href="/services" className="hover:text-white">Servicios</a>
-            <a href="/#about" className="hover:text-white">Quiénes somos</a>
-            <a href="/#contacto" className="hover:text-white">Contacto</a>
-            <a href="/#contacto" className="hover:text-white">Cursos Online</a>
+            <Link href="/#inicio" className="hover:text-white">Inicio</Link>
+            <Link href="/services" className="hover:text-white">Servicios</Link>
+            <Link href="/#about" className="hover:text-white">Quiénes somos</Link>
+            <Link href="/#contacto" className="hover:text-white">Contacto</Link>
+            <Link href="/#cursos" className="hover:text-white">Cursos Online</Link>
           </nav>
 
           {/* Botón hamburguesa móvil */}
           <button
             className="md:hidden p-2 text-white"
             onClick={() => setOpen(!open)}
-            aria-label="Abrir menú"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -38,23 +49,23 @@ export default function Navbar() {
 
       {/* Menú móvil */}
       {open && (
-        <div className="md:hidden bg-[#0b0c0f] border-t border-white/10">
+        <div id="mobile-menu" className="md:hidden bg-[#0b0c0f] border-t border-white/10">
           <nav className="flex flex-col px-4 py-4 space-y-3 text-white/80">
-            <a href="/#inicio" onClick={() => setOpen(false)} className="hover:text-white">
+            <Link href="/#inicio" onClick={() => setOpen(false)} className="hover:text-white">
               Inicio
-            </a>
-            <a href="/services" onClick={() => setOpen(false)} className="hover:text-white">
+            </Link>
+            <Link href="/services" onClick={() => setOpen(false)} className="hover:text-white">
               Servicios
-            </a>
-            <a href="/#about" onClick={() => setOpen(false)} className="hover:text-white">
+            </Link>
+            <Link href="/#about" onClick={() => setOpen(false)} className="hover:text-white">
               Quiénes somos
-            </a>
-            <a href="/#contacto" onClick={() => setOpen(false)} className="hover:text-white">
+            </Link>
+            <Link href="/#contacto" onClick={() => setOpen(false)} className="hover:text-white">
               Contacto
-            </a>
-            <a href="/#contacto" onClick={() => setOpen(false)} className="hover:text-white">
+            </Link>
+            <Link href="/#cursos" onClick={() => setOpen(false)} className="hover:text-white">
               Cursos Online
-            </a>
+            </Link>
           </nav>
         </div>
       )}
