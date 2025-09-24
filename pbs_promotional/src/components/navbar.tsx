@@ -120,14 +120,14 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className="block py-2 font-medium hover:text-white"
                 >
-                  Ver todos los servicios
+                  Articulos Promocionales
                 </Link>
               </li>
 
               {itemCategories.map(c => (
                 <li key={c.slug}>
                   <Link
-                    href={`/services/articulos/${c.slug}`}
+                    href={"/underConstruction"}
                     onClick={() => setOpen(false)}
                     className="block py-2 hover:text-white"
                   >
