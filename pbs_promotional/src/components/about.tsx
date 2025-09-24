@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function About() {
   return (
-    <section id="about" className="py-16 md:pt-16 md:pb-0 bg-white text-gray-800">
+    <section id="about" className="py-8 md:pt-16 md:pb-0 bg-white text-gray-800">
       <div className="max-w-5xl mx-auto px-4 space-y-12">
 
         {/* Título principal */}

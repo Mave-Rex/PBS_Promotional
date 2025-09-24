@@ -46,15 +46,15 @@ export default function Footer() {
           © {new Date().getFullYear()} PBS Promotional. Todos los derechos
           reservados.
         </p>
-        {/*<p className="text-sm text-white/60">
-          Powered by{" "}
+        <p className="text-sm text-white/60">
+          Developed by{" "}
           <a
             href="#"
             className="text-pink-500 hover:text-pink-400 font-medium transition-colors duration-200"
           >
-            Rex Team Digital Solutions
+            Rex Team 
           </a>
-        </p> */}
+        </p> 
       </div>
     </footer>
   );

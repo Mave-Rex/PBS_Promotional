@@ -1,11 +1,11 @@
 import Hero from "@/components/hero";
-import ServicesMain from "./servicesMain";
+import UnderConstruction from "@/app/underConstruction/underConstruction";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ServicesMain />
+      <UnderConstruction />
     </>
   );
 }
