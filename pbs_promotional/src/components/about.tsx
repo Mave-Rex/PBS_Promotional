@@ -26,7 +26,7 @@ export default function About() {
 
 
           <p className="text-base md:text-lg leading-relaxed text-gray-700 text-justify">
-            <span className="font-bold">PBS Promotional.</span> ofrece sus
+            <span className="font-bold">PBS Promotional</span> ofrece sus
             servicios en el área metropolitana desde 2010. Esta empresa,
             fundada por un excelente equipo de profesionales en{" "}
             <span className="font-semibold">Marketing, Branding y Publicidad</span>. 

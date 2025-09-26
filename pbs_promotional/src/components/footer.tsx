@@ -49,7 +49,7 @@ export default function Footer() {
         <p className="text-sm text-white/60">
           Developed by{" "}
           <a
-            href="#"
+            href="https://www.rex-team.com/"
             className="text-pink-500 hover:text-pink-400 font-medium transition-colors duration-200"
           >
             Rex Team 
