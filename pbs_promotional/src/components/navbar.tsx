@@ -9,10 +9,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);           // drawer móvil
   const [openServices, setOpenServices] = useState(false); // submenú móvil
 
+  type Product = {
+  id: string;
+  section: string;      // p.ej. "baño", "día_madre", etc.
+  name: string;         // título de la pieza
+  imagePath: string;    // ruta 1025x642
+  description?: string;
+};
+
 
 const categories = useMemo(() => {
   const set = new Set<string>();
-  (products as any[]).forEach((p) => set.add(p.section));
+  (products as Product[]).forEach((p) => set.add(p.section));
   // orden opcional
   return Array.from(set).sort((a, b) => a.localeCompare(b, "es"));
 }, []);
