@@ -12,7 +12,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="mt-6 text-xl md:text-2xl text-white/90">
-          ¡Impulsando tu imagen corporativa!
+          ¡Impulsando tu Imagen Corporativa!
         </p>
       </section>
     </>

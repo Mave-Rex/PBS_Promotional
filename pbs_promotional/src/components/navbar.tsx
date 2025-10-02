@@ -1,13 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo,useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
-import { itemCategories } from "../app/services/itemCategories";
+import products from "../data/products.json";
 export default function Navbar() {
   const [open, setOpen] = useState(false);           // drawer móvil
   const [openServices, setOpenServices] = useState(false); // submenú móvil
+
+
+const categories = useMemo(() => {
+  const set = new Set<string>();
+  (products as any[]).forEach((p) => set.add(p.section));
+  // orden opcional
+  return Array.from(set).sort((a, b) => a.localeCompare(b, "es"));
+}, []);
+
+
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-[#0b0c0f]/80 backdrop-blur">
@@ -45,18 +55,19 @@ export default function Navbar() {
                   Artículos Promocionales
                 </div>
                 <ul className="max-h-80 overflow-auto pr-1">
-                  {itemCategories.map((c) => (
-                    <li key={c.slug}>
-                      <Link
-                        href={"/underConstruction"}
-                        className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-zinc-800 text-white/90"
-                      >
-                        <ChevronRight className="h-4 w-4 opacity-60" />
-                        <span>{c.name}</span>
-                      </Link>
-                    </li>
+                  {categories.map((section) => (
+                     <li key={section}>
+                  <Link
+                    href={`/services#sec-${section}`} // 👈 usa el section tal cual
+                    className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-zinc-800 text-white/90"
+                  >
+                    <ChevronRight className="h-4 w-4 opacity-60" />
+                    <span className="capitalize">{section.replace(/_/g, " ")}</span>
+                  </Link>
+                </li>
                   ))}
                 </ul>
+
               </div>
             </div>
 
@@ -124,14 +135,14 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              {itemCategories.map(c => (
-                <li key={c.slug}>
+              {categories.map((section) => (
+                <li key={section}>
                   <Link
-                    href={"/underConstruction"}
+                    href={`/services#sec-${section}`} // 👈 igual aquí
                     onClick={() => setOpen(false)}
-                    className="block py-2 hover:text-white"
+                    className="block py-2 hover:text-white capitalize"
                   >
-                    {c.name}
+                    {section.replace(/_/g, " ")}
                   </Link>
                 </li>
               ))}
