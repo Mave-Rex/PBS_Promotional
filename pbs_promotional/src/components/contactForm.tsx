@@ -1,14 +1,51 @@
+"use client";
+import { useRef, useState } from "react";
+
 export default function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">("idle");
+  const [serverMsg, setServerMsg] = useState<string>("");
+  const alertRef = useRef<HTMLDivElement>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();                     // ← no recarga ni vuelve al inicio
+    setStatus("sending");
+    setServerMsg("");
+
+    const formEl = e.currentTarget;
+    const data = new FormData(formEl);
+
+    // honeypot: si tiene algo, simulamos OK y no enviamos
+    if ((data.get("website") || "").toString().trim()) {
+      setStatus("ok");
+      formEl.reset();
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/contact", { method: "POST", body: data });
+      if (res.ok) {
+        setStatus("ok");
+        formEl.reset();
+      } else {
+        const json = await res.json().catch(() => ({} as any));
+        setServerMsg(json?.error || `Código ${res.status}`);
+        setStatus("err");
+      }
+    } catch {
+      setServerMsg("Error de red. Intenta nuevamente.");
+      setStatus("err");
+    } finally {
+      // Llevar el foco a la alerta para accesibilidad
+      setTimeout(() => alertRef.current?.focus(), 0);
+    }
+  }
+
   return (
     <section id="contacto" className="bg-white py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
-            Contáctanos
-          </h2>
-          <p className="mt-3 text-gray-600">
-            Cuéntanos sobre tu proyecto y te responderemos muy pronto.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">Contáctanos</h2>
+          <p className="mt-3 text-gray-600">Cuéntanos sobre tu proyecto y te responderemos muy pronto.</p>
         </div>
 
         <div className="grid md:grid-cols-5 gap-8">
@@ -57,24 +94,14 @@ export default function ContactForm() {
                 WhatsApp
               </a>
 
-              <p className="mt-4 text-xs text-gray-500">
-                * Respetamos tu privacidad. No compartimos tu información.
-              </p>
+              <p className="mt-4 text-xs text-gray-500">* Respetamos tu privacidad. No compartimos tu información.</p>
             </div>
           </aside>
 
           {/* Formulario */}
           <div className="md:col-span-3">
-            {/* 
-              👉 Si usas Formspree, pon tu endpoint en action:
-              action="https://formspree.io/f/TU_ID" method="POST"
-              O cambia por tu endpoint serverless /api/contact
-            */}
-            <form
-              action="#"
-              method="POST"
-              className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-lg"
-            >
+            {/* Quita action="#" para evitar el salto. Si quisieras “progressive enhancement”, podrías dejar action="/api/contact". */}
+            <form onSubmit={onSubmit} noValidate className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-lg">
               {/* Honeypot anti-spam */}
               <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
@@ -139,16 +166,37 @@ export default function ContactForm() {
                 />
               </div>
 
-              {/* reCAPTCHA v3/hCaptcha podría ir aquí si lo integras */}
+              {/* Área de alertas accesible */}
+              <div
+                ref={alertRef}
+                tabIndex={-1}
+                aria-live="polite"
+                aria-atomic="true"
+                className="mt-4"
+              >
+                {status === "ok" && (
+                  <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-green-700">
+                    ¡Mensaje enviado! Te responderemos en 24–48h.
+                  </div>
+                )}
+                {status === "err" && (
+                  <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-red-700">
+                    No pudimos enviar tu mensaje. {serverMsg || "Intenta nuevamente."}
+                  </div>
+                )}
+              </div>
 
               <div className="mt-6 flex items-center gap-3">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-xl bg-pink-600 px-6 py-3 font-semibold text-white shadow hover:bg-pink-700"
+                  disabled={status === "sending"}
+                  className="inline-flex items-center justify-center rounded-xl bg-pink-600 px-6 py-3 font-semibold text-white shadow hover:bg-pink-700 disabled:opacity-60"
                 >
-                  Enviar mensaje
+                  {status === "sending" ? "Enviando…" : "Enviar mensaje"}
                 </button>
-                <span className="text-xs text-gray-500">Tiempo de respuesta: 24–48h</span>
+                <span className="text-xs text-gray-500">
+                  {status === "sending" ? "Procesando…" : "Tiempo de respuesta: 24–48h"}
+                </span>
               </div>
             </form>
           </div>

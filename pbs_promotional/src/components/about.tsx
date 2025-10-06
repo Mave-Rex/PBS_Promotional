@@ -1,8 +1,8 @@
 import Image from "next/image";
 export default function About() {
   return (
-    <section id="about" className="py-8 md:pt-16 md:pb-0 bg-white text-gray-800">
-      <div className="max-w-5xl mx-auto px-4 space-y-12">
+    <section id="about" className="py-2 md:pt-2 md:pb-0 bg-white text-gray-800">
+      <div className="max-w-5xl mx-auto px-4 space-y-2">
 
         {/* Título principal */}
         <div className="text-center">
@@ -45,46 +45,46 @@ export default function About() {
             Misión y Visión
           </h3>
 
-        <div className="text-center">
-          <Image 
-            src="/images/misión.png"  
-            alt="Misión PBS"
-            width={550} 
-            height={350} 
-            className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
-          />
-        </div>
-
-          <div className="text-center space-y-3">
-            <h4 className="text-lg font-bold text-gray-800">MISIÓN</h4>
-            <p className="text-base leading-relaxed text-gray-700 max-w-3xl mx-auto">
-              Dar acompañamiento a nuestros clientes a lo largo de todo el
-              desarrollo de su estrategia de marca para el cumplimiento con el
-              plan de marketing del negocio.
-            </p>
-          </div>
-
-          {/* Visión */}
-          <div className="text-center">
-          <Image 
-            src="/images/visión.png"
-            alt="Visión PBS"
-            width={550} 
-            height={350} 
-            className="mx-auto rounded-2xl shadow-lg max-h-80 object-cover"
-          />
-          </div>
-
-          <div className="text-center space-y-3 pt-6">
-            <h4 className="text-lg font-bold text-gray-800">VISIÓN</h4>
-            <p className="text-base leading-relaxed text-gray-700 max-w-3xl mx-auto">
-              Ser reconocidos por nuestros clientes y por el mercado como la
-              principal agencia de marketing y publicidad en la región.
-            </p>
-          </div>
-          <hr className="border-t-2 border-pink-500 my-8" />
-        </div>
+         {/* Contenedor flex para alinear horizontalmente */}
+    <div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
+      
+      {/* Misión */}
+      <div className="flex-1 text-center bg-white rounded-2xl shadow-md p-6">
+        <Image 
+          src="/images/misión.png"  
+          alt="Misión PBS"
+          width={550} 
+          height={350} 
+          className="mx-auto rounded-2xl shadow-lg max-h-64 object-cover"
+        />
+        <h4 className="text-lg font-bold text-gray-800 mt-4">MISIÓN</h4>
+        <p className="text-base leading-relaxed text-gray-700 mt-2">
+          Dar acompañamiento a nuestros clientes a lo largo de todo el
+          desarrollo de su estrategia de marca para el cumplimiento con el
+          plan de marketing del negocio.
+        </p>
       </div>
+
+      {/* Visión */}
+      <div className="flex-1 text-center bg-white rounded-2xl shadow-md p-6">
+        <Image 
+          src="/images/visión.png"
+          alt="Visión PBS"
+          width={550} 
+          height={350} 
+          className="mx-auto rounded-2xl shadow-lg max-h-64 object-cover"
+        />
+        <h4 className="text-lg font-bold text-gray-800 mt-4">VISIÓN</h4>
+        <p className="text-base leading-relaxed text-gray-700 mt-2">
+          Ser reconocidos por nuestros clientes y por el mercado como la
+          principal agencia de marketing y publicidad en la región.
+        </p>
+      </div>
+    </div>
+
+    <hr className="border-t-2 border-pink-500 my-8 w-2/3 mx-auto" />
+  </div>
+  </div>
     </section>
   );
 }

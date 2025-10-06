@@ -23,7 +23,7 @@ function groupBySection(items: ProductItem[]) {
   return map;
 }
 
-export default function PromotionalProducts() {
+export default function corporativeKits() {
   const [data, setData] = useState<ProductItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,7 +50,7 @@ export default function PromotionalProducts() {
       .catch(async () => {
         // 2) fallback: importar JSON local
         try {
-          const mod = await import("../../data/products.json");
+          const mod = await import("../../data/kits.json");
           if (mounted) {
             setData(mod.default as ProductItem[]);
             setLoading(false);
@@ -76,7 +76,7 @@ export default function PromotionalProducts() {
       <section className="py-4 md:py-4 bg-white text-gray-800">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-            Productos <span className="text-pink-600">Promocionales</span>
+            Kits <span className="text-pink-600">Corporativos</span>
           </h2>
           <p className="mt-6 text-center text-gray-500">Cargando…</p>
         </div>
@@ -89,7 +89,7 @@ export default function PromotionalProducts() {
       <section className="py-2 md:py-2 bg-white text-gray-800">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-            Productos <span className="text-pink-600">Promocionales</span>
+            Kits <span className="text-pink-600">Corporativos</span>
           </h2>
           <p className="mt-6 text-center text-red-600">{error}</p>
         </div>
@@ -98,12 +98,12 @@ export default function PromotionalProducts() {
   }
 
   return (
-    <section id="productos" className="py-2 md:py-2 bg-white text-gray-900">
+    <section id="kitsCorporativos" className="py-2 md:py-2 bg-white text-gray-900">
       <div className="mx-auto max-w-7xl px-4">
         {/* Título general llamativo */}
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
-            Productos <span className="text-pink-600">Promocionales</span>
+            Kits <span className="text-pink-600">Corporativos</span>
           </h2>
           <p className="mt-3 text-gray-600">
             Envíos a Nivel Nacional

@@ -1,13 +1,4 @@
 [
-  { "id": "regalo-1", "section": "Regalos", "name": "Regalo 1", "imagePath": "/images/products/regalo/1.jpeg" },
-  { "id": "regalo-2", "section": "Regalos", "name": "Regalo 2", "imagePath": "/images/products/regalo/2.jpeg" },
-  { "id": "regalo-3", "section": "Regalos", "name": "Regalo 3", "imagePath": "/images/products/regalo/3.jpeg" },
-  { "id": "regalo-4", "section": "Regalos", "name": "Regalo 4", "imagePath": "/images/products/regalo/4.jpeg" },
-  { "id": "regalo-5", "section": "Regalos", "name": "Regalo 5", "imagePath": "/images/products/regalo/5.jpeg" },
-  { "id": "regalo-6", "section": "Regalos", "name": "Regalo 6", "imagePath": "/images/products/regalo/6.jpeg" },
-  { "id": "regalo-7", "section": "Regalos", "name": "Regalo 7", "imagePath": "/images/products/regalo/7.jpeg" },
-  { "id": "regalo-8", "section": "Regalos", "name": "Regalo 8", "imagePath": "/images/products/regalo/8.jpeg" },
-
   { "id": "kits-1", "section": "Kits", "name": "Kit 1", "imagePath": "/images/products/kits/1.jpeg" },
   { "id": "kits-2", "section": "Kits", "name": "Kit 2", "imagePath": "/images/products/kits/2.jpeg" },
   { "id": "kits-3", "section": "Kits", "name": "Kit 3", "imagePath": "/images/products/kits/3.jpeg" },
@@ -27,6 +18,15 @@
   { "id": "kits-17", "section": "Kits", "name": "Kit 17", "imagePath": "/images/products/kits/17.jpeg" },
   { "id": "kits-18", "section": "Kits", "name": "Kit 18", "imagePath": "/images/products/kits/18.jpeg" },
   { "id": "kits-19", "section": "Kits", "name": "Kit 19", "imagePath": "/images/products/kits/19.jpeg" },
+  
+  { "id": "regalo-1", "section": "Regalos", "name": "Regalo 1", "imagePath": "/images/products/regalo/1.jpeg" },
+  { "id": "regalo-2", "section": "Regalos", "name": "Regalo 2", "imagePath": "/images/products/regalo/2.jpeg" },
+  { "id": "regalo-3", "section": "Regalos", "name": "Regalo 3", "imagePath": "/images/products/regalo/3.jpeg" },
+  { "id": "regalo-4", "section": "Regalos", "name": "Regalo 4", "imagePath": "/images/products/regalo/4.jpeg" },
+  { "id": "regalo-5", "section": "Regalos", "name": "Regalo 5", "imagePath": "/images/products/regalo/5.jpeg" },
+  { "id": "regalo-6", "section": "Regalos", "name": "Regalo 6", "imagePath": "/images/products/regalo/6.jpeg" },
+  { "id": "regalo-7", "section": "Regalos", "name": "Regalo 7", "imagePath": "/images/products/regalo/7.jpeg" },
+  { "id": "regalo-8", "section": "Regalos", "name": "Regalo 8", "imagePath": "/images/products/regalo/8.jpeg" },
 
   { "id": "dia_madre-1", "section": "Día de la Madre", "name": "Producto Día Madre 1", "imagePath": "/images/products/dia_madre/1.jpeg" },
   { "id": "dia_madre-2", "section": "Día de la Madre", "name": "Producto Día Madre 2", "imagePath": "/images/products/dia_madre/2.jpeg" },
@@ -53,12 +53,6 @@
   { "id": "navidad-15", "section": "Navidad", "name": "Producto Navidad 15", "imagePath": "/images/products/navidad/15.jpeg" },
   { "id": "navidad-16", "section": "Navidad", "name": "Producto Navidad 16", "imagePath": "/images/products/navidad/16.jpeg" },
   { "id": "navidad-17", "section": "Navidad", "name": "Producto Navidad 17", "imagePath": "/images/products/navidad/17.jpeg" },
-  { "id": "navidad-18", "section": "Navidad", "name": "Producto Navidad 18", "imagePath": "/images/products/navidad/18.jpeg" },
-
-  { "id": "bano-1", "section": "Baño", "name": "Producto Baño 1", "imagePath": "/images/products/baño/1.jpeg" },
-  { "id": "bano-2", "section": "Baño", "name": "Producto Baño 2", "imagePath": "/images/products/baño/2.jpeg" },
-  { "id": "bano-3", "section": "Baño", "name": "Producto Baño 3", "imagePath": "/images/products/baño/3.jpeg" },
-  { "id": "bano-4", "section": "Baño", "name": "Producto Baño 4", "imagePath": "/images/products/baño/4.jpeg" },
-  { "id": "bano-5", "section": "Baño", "name": "Producto Baño 5", "imagePath": "/images/products/baño/5.jpeg" }
+  { "id": "navidad-18", "section": "Navidad", "name": "Producto Navidad 18", "imagePath": "/images/products/navidad/18.jpeg" }
 
 ]

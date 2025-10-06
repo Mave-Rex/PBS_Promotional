@@ -34,7 +34,7 @@ export default function ServicesMain() {
       </section>
 
       {/* ¿Sabías qué? */}
-      <section className="max-w-3xl mx-auto px-4 py-10">
+      <section id="listaServicios"  className="max-w-3xl mx-auto px-4 py-10">
         <h2 className="text-2xl md:text-3xl font-bold text-pink-500 text-center mb-4">
           {didYouKnow.title}
         </h2>

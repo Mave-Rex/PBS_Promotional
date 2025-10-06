@@ -1,13 +1,13 @@
 import Hero from "@/components/hero";
 import ServicesMain from "./servicesMain";
-import PromotionalProducts from "./promotionalProducts";
+import CorporativeKits from "./corporativeKits";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <ServicesMain />
-      <PromotionalProducts/>
+      <CorporativeKits/>
     </>
   );
 }
