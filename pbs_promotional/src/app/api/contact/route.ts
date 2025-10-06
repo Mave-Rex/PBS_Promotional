@@ -1,35 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ServerClient } from "postmark";
 
-// === ENV requeridas ===
-const TOKEN  = process.env.POSTMARK_TOKEN!;
-const FROM   = process.env.MAIL_FROM!;
-const TO     = process.env.MAIL_TO!;
-const STREAM = process.env.POSTMARK_STREAM || "outbound";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-const client = new ServerClient(TOKEN);
-
-// === Rate limit en memoria: 1 envío / hora por IP+email ===
+// Rate limit en memoria (está bien en top-level)
 const hits = new Map<string, number>();
-const WINDOW_MS = 60 * 60 * 1000; // 1 hora
+const WINDOW_MS = 60 * 60 * 1000;
 
-function keyFor(ip: string, email: string) {
-  return `${ip}:${email.toLowerCase()}`; // usa solo IP si prefieres: return ip;
-}
-
-function getIP(req: NextRequest) {
+const sanitize = (s: string) => s.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const keyFor = (ip: string, email: string) => `${ip}:${email.toLowerCase()}`;
+const getIP = (req: NextRequest) => {
   const xff = req.headers.get("x-forwarded-for");
   if (xff) return xff.split(",")[0].trim();
   const xrip = req.headers.get("x-real-ip");
   if (xrip) return xrip;
   return "127.0.0.1";
-}
-
-const sanitize = (s: string) => s.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+};
 
 export async function POST(req: NextRequest) {
   try {
-    // Acepta form-data y JSON
+    // ✅ lee y valida ENV en runtime, no en build
+    const TOKEN  = process.env.POSTMARK_TOKEN;
+    const FROM   = process.env.MAIL_FROM;
+    const TO     = process.env.MAIL_TO;
+    const STREAM = process.env.POSTMARK_STREAM || "outbound";
+
+    if (!TOKEN || !FROM || !TO) {
+      return NextResponse.json(
+        { error: "Faltan variables de entorno (POSTMARK_TOKEN, MAIL_FROM, MAIL_TO)." },
+        { status: 500 }
+      );
+    }
+
+    const client = new ServerClient(TOKEN);
+
+    // Acepta JSON o form-data
     const ct = req.headers.get("content-type") || "";
     let name = "", email = "", phone = "", subject = "", message = "", website = "";
 
@@ -46,15 +52,12 @@ export async function POST(req: NextRequest) {
       website = (form.get("website") || "").toString().trim(); // honeypot
     }
 
-    // Honeypot
     if (website) return NextResponse.json({ ok: true, skipped: "honeypot" });
-
-    // Validación mínima
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: "Campos requeridos faltantes." }, { status: 400 });
     }
 
-    // === Rate limit ===
+    // Rate limit
     const ip = getIP(req);
     const k = keyFor(ip, email);
     const last = hits.get(k) || 0;
@@ -67,7 +70,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Email HTML
     const html = `
       <h2>Nuevo mensaje</h2>
       <p><b>Nombre:</b> ${sanitize(name)}</p>
@@ -78,7 +80,6 @@ export async function POST(req: NextRequest) {
       <pre style="white-space:pre-wrap">${sanitize(message)}</pre>
     `;
 
-    // Envío con Postmark
     const r = await client.sendEmail({
       From: FROM,
       To: TO,
@@ -89,7 +90,6 @@ export async function POST(req: NextRequest) {
       MessageStream: STREAM,
     });
 
-    // marca el envío solo si fue OK
     hits.set(k, Date.now());
 
     return NextResponse.json({
@@ -97,16 +97,16 @@ export async function POST(req: NextRequest) {
       id: r.MessageID,
       to: r.To,
       submittedAt: r.SubmittedAt,
-      stream: STREAM, // <- usa el que enviaste
+      stream: STREAM,
     });
   } catch (err: unknown) {
-  const message = err instanceof Error ? err.message : String(err);
-  console.error("Contact ERROR:", message);
-  return NextResponse.json({ error: "No se pudo enviar el correo." }, { status: 500 });
-}
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("Contact ERROR:", message);
+    return NextResponse.json({ error: "No se pudo enviar el correo." }, { status: 500 });
+  }
 }
 
-// (Opcional) Salud del endpoint
 export async function GET() {
+  const STREAM = process.env.POSTMARK_STREAM || "outbound";
   return NextResponse.json({ status: "ok", stream: STREAM });
 }
