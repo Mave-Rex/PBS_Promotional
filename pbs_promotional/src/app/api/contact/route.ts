@@ -100,9 +100,10 @@ export async function POST(req: NextRequest) {
       stream: STREAM, // <- usa el que enviaste
     });
   } catch (err: unknown) {
-    console.error("Contact ERROR:", e?.message || e);
-    return NextResponse.json({ error: "No se pudo enviar el correo." }, { status: 500 });
-  }
+  const message = err instanceof Error ? err.message : String(err);
+  console.error("Contact ERROR:", message);
+  return NextResponse.json({ error: "No se pudo enviar el correo." }, { status: 500 });
+}
 }
 
 // (Opcional) Salud del endpoint
