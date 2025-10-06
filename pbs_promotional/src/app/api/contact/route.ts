@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
       submittedAt: r.SubmittedAt,
       stream: STREAM, // <- usa el que enviaste
     });
-  } catch (e: any) {
+  } catch (err: unknown) {
     console.error("Contact ERROR:", e?.message || e);
     return NextResponse.json({ error: "No se pudo enviar el correo." }, { status: 500 });
   }

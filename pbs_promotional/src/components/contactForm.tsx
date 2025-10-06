@@ -27,13 +27,19 @@ export default function ContactForm() {
         setStatus("ok");
         formEl.reset();
       } else {
-        const json = await res.json().catch(() => ({} as any));
-        setServerMsg(json?.error || `Código ${res.status}`);
+        type ErrorResponse = { error?: string };
+
+        let json: unknown;
+        try {
+          json = await res.json();
+        } catch {
+          json = {};
+        }
+
+        const { error } = json as ErrorResponse;
+        setServerMsg(error ?? `Código ${res.status}`);
         setStatus("err");
       }
-    } catch {
-      setServerMsg("Error de red. Intenta nuevamente.");
-      setStatus("err");
     } finally {
       // Llevar el foco a la alerta para accesibilidad
       setTimeout(() => alertRef.current?.focus(), 0);

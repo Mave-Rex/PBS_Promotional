@@ -140,7 +140,7 @@ const categories = useMemo(() => {
             <Link href="/#about" className="hover:text-white">Quiénes somos</Link>
             <Link
               href="/#contacto"
-              className="inline-flex items-center gap-2 rounded-xl bg-pink-500 px-4 py-2  font-semibold text-purple
+              className="inline-flex items-center gap-2 rounded-xl bg-pink-500 px-4 py-2  font-semibold 
               hover:shadow-[0_0_28px_#ff69b4AA] "
             >
               <MessageCircle size={16} /> Contacto
@@ -325,7 +325,7 @@ const categories = useMemo(() => {
             <Link
               href="/#contact"
               onClick={() => setOpen(false)}
-              className="flex-1 rounded-lg bg-pink-500 px-3 py-2 text-center font-semibold text-purple"
+              className="flex-1 rounded-lg bg-pink-500 px-3 py-2 text-center font-semibold "
             >
               Contacto
             </Link>

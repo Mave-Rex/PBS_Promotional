@@ -23,7 +23,7 @@ function groupBySection(items: ProductItem[]) {
   return map;
 }
 
-export default function corporativeKits() {
+export default function CorporativeKits() {
   const [data, setData] = useState<ProductItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
