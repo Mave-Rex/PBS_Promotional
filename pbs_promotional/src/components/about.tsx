@@ -57,7 +57,7 @@ export default function About() {
           height={350} 
           className="mx-auto rounded-2xl shadow-lg max-h-64 object-cover"
         />
-        <h4 className="text-lg font-bold text-gray-800 mt-4">MISIÓN</h4>
+        <h4 className="text-lg font-bold text-pink-600 mt-4">MISIÓN</h4>
         <p className="text-base leading-relaxed text-gray-700 mt-2">
           Dar acompañamiento a nuestros clientes a lo largo de todo el
           desarrollo de su estrategia de marca para el cumplimiento con el
@@ -74,7 +74,7 @@ export default function About() {
           height={350} 
           className="mx-auto rounded-2xl shadow-lg max-h-64 object-cover"
         />
-        <h4 className="text-lg font-bold text-gray-800 mt-4">VISIÓN</h4>
+        <h4 className="text-lg font-bold text-pink-600 mt-4">VISIÓN</h4>
         <p className="text-base leading-relaxed text-gray-700 mt-2">
           Ser reconocidos por nuestros clientes y por el mercado como la
           principal agencia de marketing y publicidad en la región.

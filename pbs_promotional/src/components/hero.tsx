@@ -81,8 +81,8 @@ export default function Hero() {
       {/* Contenido (logotipo / título) */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-4">
         <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-          <span className="block text-pink-500 drop-shadow-[0_4px_16px_rgba(236,72,153,0.35)]">PBS</span>
-          <span className="block text-2xl md:text-4xl tracking-[0.25em] text-pink-300">
+          <span className="block text-pink-400 drop-shadow-[0_4px_16px_rgba(236,72,153,0.35)]">PBS</span>
+          <span className="block text-2xl md:text-4xl tracking-[0.25em] text-pink-400">
             PROMOTIONAL
           </span>
         </h1>
