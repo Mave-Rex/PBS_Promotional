@@ -187,11 +187,7 @@ export default function CorporativeKits() {
       setCartOpen(false);
       return;
     }
-
-    if (!name.trim() || name.trim().length < 2) {
-      push("error", "Nombre inválido (mínimo 2 caracteres).");
-      return;
-    }
+    
     if (!isValidEmail(email.trim())) {
       push("error", "Email inválido.");
       return;

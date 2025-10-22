@@ -21,7 +21,7 @@ export default function DownloadCatalog({
   const safeHref = encodeURI(pdfHref);
 
   return (
-    <section className="w-full flex flex-col items-center py-10">
+    <section id="catalog" className="w-full flex flex-col items-center py-10">
       
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-700 mb-4">
             Catálogo

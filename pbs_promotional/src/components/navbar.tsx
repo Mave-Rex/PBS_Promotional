@@ -104,7 +104,7 @@ const categories = useMemo(() => {
                 <ul className="max-h-80 overflow-auto pr-1">
                   <li>
                     <Link
-                      href="/services#listaServicios"
+                      href="/#catalog"
                       className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-zinc-800 text-white/90"
                     >
                       <ChevronRight className="h-4 w-4 opacity-60" />
@@ -243,7 +243,7 @@ const categories = useMemo(() => {
                 <ul className="max-h-64 overflow-auto">
                   <li>
                     <Link
-                      href="/services#listaServicios"
+                      href="/#catalog"
                       onClick={() => setOpen(false)}
                       className="block py-2 hover:text-white"
                     >
